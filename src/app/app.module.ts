@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { PersonaService } from './componentes/servicios/persona.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, PersonaComponent],
@@ -17,6 +18,7 @@ import { PersonaService } from './componentes/servicios/persona.service';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [PersonaService],
   bootstrap: [AppComponent],
