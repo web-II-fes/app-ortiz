@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "app-ortiz"
+    }
+  },
+  "defaultProject": "app-ortiz",
+  "cli": {
+    "analytics": false
+  }
 }
