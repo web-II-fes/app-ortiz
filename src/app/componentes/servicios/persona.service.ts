@@ -31,4 +31,11 @@ export class PersonaService {
       this.httpOptions
     );
   }
+
+  borrarPersona(idPersona) {
+    return this.httpClient.delete(
+      this.personaUrl + 'persona/' + idPersona,
+      this.httpOptions
+    );
+  }
 }
