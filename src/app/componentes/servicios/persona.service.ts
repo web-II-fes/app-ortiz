@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class PersonaService {
@@ -11,6 +13,14 @@ export class PersonaService {
   private personaUrl = 'http://localhost:3002/api/modules/personas/';
 
   constructor(private httpClient: HttpClient) {}
+
+  getArticlesTechnology(): Observable<any> {
+    return this.httpClient
+      .get(
+        'http://newsapi.org/v2/everything?q=apple&from=2020-09-08&to=2020-09-08&sortBy=popularity&apiKey=40ce89212aec4dfdb08f16f7e9838b8c'
+      )
+      .pipe(map((data: any) => data.articles));
+  }
 
   getPersonas() {
     return this.httpClient.get(this.personaUrl + 'persona');

@@ -11,6 +11,7 @@ export class PersonaComponent implements OnInit {
   itemForm: FormGroup;
 
   personas: any[] = [];
+  noticias: any[] = [];
   idPersona: any;
 
   constructor(
@@ -22,6 +23,7 @@ export class PersonaComponent implements OnInit {
     this.initForm();
 
     this.getPersona();
+    this.getNoticias();
   }
 
   initForm() {
@@ -35,6 +37,13 @@ export class PersonaComponent implements OnInit {
   getPersona() {
     this.personaService.getPersonas().subscribe((personas: any) => {
       this.personas = personas;
+    });
+  }
+
+  getNoticias() {
+    this.personaService.getArticlesTechnology().subscribe((noticias) => {
+      debugger;
+      this.noticias = noticias;
     });
   }
 
