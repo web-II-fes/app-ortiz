@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CursoService } from './../servicios/curso.service';
 
 @Component({
@@ -11,14 +12,33 @@ export class CursoComponent implements OnInit {
   itemForm: FormGroup;
 
   cursos: any[] = [];
-  idCurso: any;
+  idCurso: string;
 
-  constructor(private fb: FormBuilder, private cursoService: CursoService) {}
+  constructor(
+    private fb: FormBuilder,
+    private cursoService: CursoService,
+    private paramRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
 
-    this.getCurso();
+    this.paramRoute.paramMap.subscribe((param) => {
+      debugger;
+      this.idCurso = param.get('id');
+
+      if (this.idCurso !== 'new') {
+        this.getCursoById(this.idCurso);
+      }
+    });
+  }
+  getCursoById(idCurso: string) {
+    this.cursoService.getCursoById(idCurso).subscribe((data) => {
+      debugger;
+      let cursoId = data;
+
+      this.itemForm.patchValue(cursoId);
+    });
   }
 
   initForm() {
@@ -27,12 +47,6 @@ export class CursoComponent implements OnInit {
       profesor: [''],
       ano: [],
       estado: [''],
-    });
-  }
-
-  getCurso() {
-    this.cursoService.getCursos().subscribe((cursos: any) => {
-      this.cursos = cursos;
     });
   }
 
@@ -61,7 +75,7 @@ export class CursoComponent implements OnInit {
           console.log('Curso Editada: ', curso);
         });
     } else {
-      this.cursoService.guardarCurso(this.itemForm.value).subscribe((curso) => {
+      this.cursoService.saveCurso(this.itemForm.value).subscribe((curso) => {
         console.log('Curso Nueva: ', curso);
       });
     }

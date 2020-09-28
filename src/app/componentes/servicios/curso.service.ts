@@ -13,10 +13,14 @@ export class CursoService {
   constructor(private httpClient: HttpClient) {}
 
   getCursos() {
-    return this.httpClient.get(this.cursoUrl + 'curso');
+    return this.httpClient.get(this.cursoUrl + 'cursos');
   }
 
-  guardarCurso(curso: any) {
+  getCursoById(idCurso: string) {
+    return this.httpClient.get(this.cursoUrl + 'cursoId/' + idCurso);
+  }
+
+  saveCurso(curso: any) {
     return this.httpClient.post(
       this.cursoUrl + 'curso',
       JSON.stringify(curso),

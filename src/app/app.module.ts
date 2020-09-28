@@ -17,9 +17,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { CursosComponent } from './componentes/cursos/cursos.component';
+
+import { MatCardModule } from '@angular/material/card';
+
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
-  declarations: [AppComponent, PersonaComponent, CursoComponent],
+  declarations: [
+    AppComponent,
+    PersonaComponent,
+    CursoComponent,
+    CursosComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,6 +38,8 @@ import { MatInputModule } from '@angular/material/input';
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
+    MatCardModule,
+    MatTableModule,
   ],
   providers: [PersonaService, CursoService],
   bootstrap: [AppComponent],
