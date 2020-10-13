@@ -10,8 +10,8 @@ import { CursoComponent } from './componentes/curso/curso.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { PersonaService } from './componentes/servicios/persona.service';
-import { CursoService } from './componentes/servicios/curso.service';
+import { PersonaService } from './servicios/persona.service';
+import { CursoService } from './servicios/curso.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
