@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CursoService } from '../../servicios/curso.service';
+import { CursoService } from '../servicios/curso.service';
 
 @Component({
   selector: 'app-curso',

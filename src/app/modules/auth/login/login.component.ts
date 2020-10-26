@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
 import { TokenStorageService } from './../services/token-storage.service';
 
@@ -8,31 +9,58 @@ import { TokenStorageService } from './../services/token-storage.service';
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
+
   itemForm: FormGroup;
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+	roles: string[] = [];
 
   constructor(
-    private tokenService: TokenStorageService,
-    private auth: AuthService,
-    private fb: FormBuilder
+    private tokenStorage: TokenStorageService,
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.initForm();
-  }
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+  	}  
+  	this.iniciarFormulario();
+	}
 
-  initForm() {
-    this.itemForm = this.fb.group({
-      username: [''],
-      password: [''],
-    });
+  iniciarFormulario() {
+		this.itemForm = this.fb.group({
+		  username: [''],
+		  password: ['']
+		});
+	}
+
+  submit(): void {
+		this.authService.login(this.itemForm.value).subscribe(
+			(data) => {
+				debugger;
+				this.tokenStorage.saveToken(data.token);
+				// this.tokenStorage.saveUser(data);
+
+				this.isLoginFailed = false;
+				this.isLoggedIn = true;
+
+				this.router.navigate(['/persona/Persona']);
+				// this.roles = this.tokenStorage.getUser().roles;
+				// this.reloadPage();
+			},
+			(err) => {
+				this.errorMessage = err.error.message;
+				this.isLoginFailed = true;
+			}
+		);
+	}
+
+	reloadPage(): void {
+		window.location.reload();
   }
-  submit() {
-    let credenciales = this.itemForm.value;
-    debugger;
-    this.auth.login(credenciales).subscribe((data) => {
-      debugger;
-      let user = data;
-      this.tokenService.saveToken(data.token);
-    });
-  }
+  
 }
