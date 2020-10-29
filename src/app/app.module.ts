@@ -22,12 +22,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 
+import { ArraysComponent } from './componentes/arrays/arrays.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     PersonaComponent,
     CursoComponent,
     CursosComponent,
+    ArraysComponent
   ],
   imports: [
     BrowserModule,

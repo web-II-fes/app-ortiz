@@ -1,0 +1,40 @@
+<mat-card>
+    <h2>Personas</h2>
+    <div *ngFor = "let persona of personas">
+        <p> Nombre: {{persona.nombre}}</p>
+        <p> Apellido: {{persona.apellido}}</p>
+        <p> Edad: {{persona.edad}}</p>
+        <br>
+    </div>
+
+    <button type = "button" mat-raised-button color="primary" (click)="joinSplit()">Join y Split</button>
+    <br>
+    <br>
+    <button type = "button" mat-raised-button color="basic" (click)="reverse()">Reverse</button>
+    <br>
+    <br>
+    <button type = "button" mat-raised-button color="accent" (click)="splice()">Splice</button>
+    <br>
+    <br>
+    <button type = "button" mat-raised-button color="warn" (click)="sort()">Sort</button>
+    <br>
+    <br>
+    <button type = "button" mat-raised-button color="warn" (click)="indexOf('Pancho')">Index Of</button>
+    <br>
+    <br>
+    <button type = "button" mat-raised-button color="primary" (click)="lastIndexOf('Francis')">Last Index Of</button>
+    <br>
+    <br>
+    <button type = "button" mat-raised-button color="primary" (click)="includes('Kun')">Includes</button>
+    <br>
+    <br>
+    <button type = "button" mat-raised-button color="basic" (click)="find()">Find</button>
+    <br>
+    <br>
+    <button type = "button" mat-raised-button color="accent" (click)="map()">Map</button>
+    <br>
+    <br>
+    <button type = "button" mat-raised-button color="warn" (click)="filter()">Filter</button> 
+    <br>
+    <br>
+</mat-card>

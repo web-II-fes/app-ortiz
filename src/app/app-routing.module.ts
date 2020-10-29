@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ArraysComponent } from './../app/componentes/arrays/arrays.component';
 
 /* import { CursoComponent } from './componentes/curso/curso.component';
 import { CursosComponent } from './componentes/cursos/cursos.component';
@@ -18,6 +19,8 @@ const routes: Routes = [
   /* { path: 'curso', component: CursoComponent },
   { path: 'curso/:id', component: CursoComponent },
   { path: 'cursos', component: CursosComponent }, */
+
+  { path: 'arrays', component: ArraysComponent },
 ];
 
 @NgModule({
